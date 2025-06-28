@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #0077cc, #00aaff);
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.5rem 0;
+    }
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .section {
+      margin-bottom: 3rem;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #0077cc;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .project-list {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .project-item {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 280px;
+    }
+    form, .todo-container, .product-container {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0077cc;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #eee;
+      margin: 0.5rem 0;
+      padding: 0.6rem;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li.completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .delete-btn {
+      background: transparent;
+      border: none;
+      color: red;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      justify-content: center;
+    }
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .product-item {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .rating {
+      color: #ffaa00;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#todo" class="nav-link">To-Do List</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h1>About Me</h1>
+      <p style="text-align:center;">Hello! I am a passionate developer skilled in building web applications using HTML, CSS, and JavaScript. Welcome to my portfolio website.</p>
+    </section>
+
+    <section id="projects" class="section">
+      <h1>Projects</h1>
+      <div class="project-list">
+        <div class="project-item"><h3>To-Do List App</h3><p>A simple task app using local storage.</p></div>
+        <div class="project-item"><h3>Product Page</h3><p>Dynamic filterable product listing UI.</p></div>
+        <div class="project-item"><h3>Portfolio</h3><p>This is the current site you're viewing!</p></div>
+      </div>
+    </section>
+
+    <section id="todo" class="section">
+      <h1>To-Do List</h1>
+      <div class="todo-container">
+        <form id="todoForm">
+          <input type="text" id="todoInput" placeholder="Enter task..." required />
+          <button type="submit">Add Task</button>
+        </form>
+        <ul id="todoList"></ul>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <h1>Product Listing</h1>
+      <div class="product-container">
+        <div class="filters">
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+          </select>
+          <input type="number" id="priceFilter" placeholder="Max Price" min="0" />
+          <select id="sortSelect">
+            <option value="none">Sort</option>
+            <option value="priceAsc">Price Low to High</option>
+            <option value="priceDesc">Price High to Low</option>
+            <option value="ratingDesc">Top Rated</option>
+          </select>
+        </div>
+        <div id="productList" class="product-list"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h1>Contact Me</h1>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" placeholder="Your message" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Portfolio Website</p>
+  </footer>
+
+  <script>
+    // To-Do App
+    document.addEventListener('DOMContentLoaded', () => {
+      const todoForm = document.getElementById('todoForm');
+      const todoInput = document.getElementById('todoInput');
+      const todoList = document.getElementById('todoList');
+      let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+      function saveTodos() {
+        localStorage.setItem('todos', JSON.stringify(todos));
+      }
+
+      function renderTodos() {
+        todoList.innerHTML = '';
+        todos.forEach((todo, index) => {
+          const li = document.createElement('li');
+          li.textContent = todo.text;
+          if (todo.completed) li.classList.add('completed');
+          li.addEventListener('click', () => {
+            todos[index].completed = !todos[index].completed;
+            saveTodos(); renderTodos();
+          });
+          const del = document.createElement('button');
+          del.textContent = '×';
+          del.className = 'delete-btn';
+          del.addEventListener('click', e => {
+            e.stopPropagation();
+            todos.splice(index, 1);
+            saveTodos(); renderTodos();
+          });
+          li.appendChild(del);
+          todoList.appendChild(li);
+        });
+      }
+
+      todoForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const text = todoInput.value.trim();
+        if (text) {
+          todos.push({ text, completed: false });
+          saveTodos(); renderTodos();
+          todoInput.value = '';
+        }
+      });
+
+      renderTodos();
+    });
+
+    // Product List
+    document.addEventListener('DOMContentLoaded', () => {
+      const products = [
+        { name: 'Smartphone', category: 'electronics', price: 699, rating: 4.5 },
+        { name: 'Laptop', category: 'electronics', price: 999, rating: 4.7 },
+        { name: 'T-Shirt', category: 'clothing', price: 25, rating: 4.0 },
+        { name: 'Jeans', category: 'clothing', price: 50, rating: 4.2 },
+        { name: 'Novel Book', category: 'books', price: 15, rating: 4.8 },
+        { name: 'Science Book', category: 'books', price: 20, rating: 4.6 }
+      ];
+      const categoryFilter = document.getElementById('categoryFilter');
+      const priceFilter = document.getElementById('priceFilter');
+      const sortSelect = document.getElementById('sortSelect');
+      const productList = document.getElementById('productList');
+
+      function render(productsToShow) {
+        productList.innerHTML = '';
+        if (!productsToShow.length) {
+          productList.innerHTML = '<p>No products found.</p>';
+          return;
+        }
+        productsToShow.forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'product-item';
+          div.innerHTML = `
+            <h3>${p.name}</h3>
+            <p>Category: ${p.category}</p>
+            <p>Price: $${p.price}</p>
+            <p class="rating">Rating: ${p.rating}</p>
+          `;
+          productList.appendChild(div);
+        });
+      }
+
+      function filterSort() {
+        let result = [...products];
+        const cat = categoryFilter.value;
+        const max = parseFloat(priceFilter.value);
+        const sort = sortSelect.value;
+
+        if (cat !== 'all') result = result.filter(p => p.category === cat);
+        if (!isNaN(max)) result = result.filter(p => p.price <= max);
+
+        if (sort === 'priceAsc') result.sort((a, b) => a.price - b.price);
+        else if (sort === 'priceDesc') result.sort((a, b) => b.price - a.price);
+        else if (sort === 'ratingDesc') result.sort((a, b) => b.rating - a.rating);
+
+        render(result);
+      }
+
+      categoryFilter.addEventListener('change', filterSort);
+      priceFilter.addEventListener('input', filterSort);
+      sortSelect.addEventListener('change', filterSort);
+      render(products);
+    });
+
+    // Contact Form
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      contactForm?.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = contactForm.name.value;
+        alert('Thank you, ' + name + '! I will contact you soon.');
+        contactForm.reset();
+      });
+    });
+  </script>
+</body>
+</html>

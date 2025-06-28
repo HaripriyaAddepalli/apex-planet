@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harry's Elegant Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      color: #333;
+      transition: all 0.3s ease;
+    }
+    body.dark-mode {
+      background: #121212;
+      color: #eee;
+    }
+    header, footer {
+      background-color: #2a9d8f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    nav {
+      background: #264653;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: #f4a261;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    body.dark-mode .container {
+      background: #1e1e1e;
+    }
+    h1, h2 {
+      color: #264653;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    body.dark-mode h1, body.dark-mode h2 {
+      color: #f4a261;
+    }
+    .image-section, .gallery, #social {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 200px;
+      height: 130px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    button {
+      background: #e76f51;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 20px auto;
+      display: block;
+    }
+    .dark-toggle {
+      background: #264653;
+      color: white;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    input, textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .bar {
+      background-color: #ccc;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .progress {
+      background-color: #2a9d8f;
+      color: white;
+      padding: 5px 10px;
+      height: 30px;
+      line-height: 30px;
+      text-align: right;
+      border-radius: 10px;
+      transition: width 1s ease-in-out;
+    }
+    blockquote {
+      font-style: italic;
+      margin: 20px;
+    }
+    cite {
+      display: block;
+      margin-top: 10px;
+      text-align: right;
+    }
+    /* Existing media query for small devices */
+    @media (max-width: 600px) {
+      nav { flex-direction: column; }
+      .gallery { flex-direction: column; }
+    }
+
+    /* New media queries for tablets and larger devices */
+    @media (min-width: 601px) and (max-width: 900px) {
+      body {
+        font-size: 16px;
+      }
+      .container {
+        max-width: 90%;
+        padding: 20px;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      .gallery img {
+        width: 45%;
+        height: auto;
+      }
+    }
+
+    @media (min-width: 901px) and (max-width: 1200px) {
+      body {
+        font-size: 18px;
+      }
+      .container {
+        max-width: 80%;
+        padding: 25px;
+      }
+      .gallery img {
+        width: 30%;
+        height: auto;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      body {
+        font-size: 20px;
+      }
+      .container {
+        max-width: 1000px;
+        padding: 30px;
+      }
+      .gallery img {
+        width: 200px;
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</div>
+
+  <header><h1>my Website</h1></header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#skills">Skills</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#social">Connect</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container" id="home">
+    <h2 data-aos="fade-up">Welcome to My Website</h2>
+    <p>Hello! I'm Harry, an engineering student learning web development.</p>
+    <div class="image-section"><img src="https://via.placeholder.com/600x300" alt="Main" /></div>
+    <button onclick="showGreeting()">Click Me!</button>
+  </div>
+
+  <div class="container" id="gallery">
+    <h2 data-aos="fade-up">Image Gallery</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200?text=Pic+1" alt="1" />
+      <img src="https://via.placeholder.com/300x200?text=Pic+2" alt="2" />
+      <img src="https://via.placeholder.com/300x200?text=Pic+3" alt="3" />
+    </div>
+  </div>
+
+  <div class="container" id="skills">
+    <h2 data-aos="fade-up">My Skills</h2>
+    <p>HTML</p>
+    <div class="bar"><div class="progress" style="width: 90%;">90%</div></div>
+    <p>CSS</p>
+    <div class="bar"><div class="progress" style="width: 85%;">85%</div></div>
+    <p>JavaScript</p>
+    <div class="bar"><div class="progress" style="width: 75%;">75%</div></div>
+  </div>
+
+  <div class="container" id="testimonials">
+    <h2 data-aos="fade-up">Testimonials</h2>
+    <blockquote data-aos="fade-left">"Harry is a fantastic coder and always eager to learn!"</blockquote>
+    <cite>– Mentor</cite>
+  </div>
+
+  <div class="container" id="social">
+    <h2 data-aos="zoom-in">Connect With Me</h2>
+    <div style="text-align: center; font-size: 30px;">
+      <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:you@example.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <div class="container" id="resume">
+    <h2>My Resume</h2>
+    <a href="resume.pdf" download><button>Download Resume</button></a>
+  </div>
+
+  <div class="container" id="contact">
+    <h2 data-aos="fade-up">Contact Me</h2>
+    <form onsubmit="submitForm(event)">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <div class="container" id="quiz">
+    <h2 data-aos="fade-up">Interactive Quiz</h2>
+    <div id="quiz-container">
+      <div id="question"></div>
+      <div id="options"></div>
+      <button id="next-btn" onclick="nextQuestion()">Next</button>
+      <div id="result" style="display:none;"></div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 Harry's Web Creation. All rights reserved.</footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function showGreeting() {
+      alert("Thanks for visiting! ✨");
+    }
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+    function submitForm(event) {
+      event.preventDefault();
+      alert("Message sent successfully! 🚀");
+    }
+
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Lisbon"],
+        answer: 2
+      },
+      {
+        question: "Which language runs in a web browser?",
+        options: ["Java", "C", "Python", "JavaScript"],
+        answer: 3
+      },
+      {
+        question: "What does CSS stand for?",
+        options: ["Central Style Sheets", "Cascading Style Sheets", "Cascading Simple Sheets", "Cars SUVs Sailboats"],
+        answer: 1
+      },
+      {
+        question: "What year was JavaScript launched?",
+        options: ["1996", "1995", "1994", "None of the above"],
+        answer: 1
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("next-btn");
+    const resultEl = document.getElementById("result");
+
+    function loadQuestion() {
+      const currentQuestion = quizData[currentQuestionIndex];
+      questionEl.textContent = currentQuestion.question;
+      optionsEl.innerHTML = "";
+      currentQuestion.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.className = "option-btn";
+        button.onclick = () => selectOption(index);
+        optionsEl.appendChild(button);
+      });
+      nextBtn.style.display = "none";
+      resultEl.style.display = "none";
+    }
+
+    function selectOption(selectedIndex) {
+      const currentQuestion = quizData[currentQuestionIndex];
+      if (selectedIndex === currentQuestion.answer) {
+        score++;
+      }
+      Array.from(optionsEl.children).forEach((btn, index) => {
+        btn.disabled = true;
+        if (index === currentQuestion.answer) {
+          btn.style.backgroundColor = "#2a9d8f";
+          btn.style.color = "white";
+        } else if (index === selectedIndex) {
+          btn.style.backgroundColor = "#e76f51";
+          btn.style.color = "white";
+        }
+      });
+      nextBtn.style.display = "block";
+    }
+
+    function nextQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < quizData.length) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      questionEl.style.display = "none";
+      optionsEl.style.display = "none";
+      nextBtn.style.display = "none";
+      resultEl.style.display = "block";
+      resultEl.textContent = `You scored ${score} out of ${quizData.length}`;
+    }
+
+    loadQuestion();
+  </script>
+  <style>
+    #quiz-container {
+      text-align: center;
+    }
+    #question {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #264653;
+    }
+    .option-btn {
+      background: #e76f51;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .option-btn:hover:not(:disabled) {
+      background: #2a9d8f;
+    }
+    .option-btn:disabled {
+      cursor: default;
+      opacity: 0.7;
+    }
+    #next-btn {
+      background: #264653;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      margin-top: 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: none;
+    }
+    #result {
+      font-size: 1.5rem;
+      color: #e76f51;
+      margin-top: 20px;
+    }
+    @media (max-width: 600px) {
+      #question {
+        font-size: 1.2rem;
+      }
+      .option-btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+      #next-btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+      #result {
+        font-size: 1.2rem;
+      }
+    }
+  </style>

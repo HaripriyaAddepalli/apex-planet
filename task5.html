@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Capstone Project - Portfolio</title>
+  <link rel="stylesheet" href="style.min.css" />
+</head>
+<body>
+  <header>
+    <h1>My Portfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="project-list">
+        <article class="project-item">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=300&q=80" alt="E-commerce Site" loading="lazy" />
+          <h3>ShopEase E-commerce</h3>
+          <p>A full-featured e-commerce platform with product catalog, shopping cart, and secure checkout.</p>
+        </article>
+        <article class="project-item">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=300&q=80" alt="Blog Platform" loading="lazy" />
+          <h3>Blogify Platform</h3>
+          <p>A modern blogging platform with user authentication, rich text editor, and comment system.</p>
+        </article>
+        <article class="project-item">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=300&q=80" alt="Portfolio Site" loading="lazy" />
+          <h3>Creative Portfolio</h3>
+          <p>An interactive portfolio site showcasing projects with animations and responsive design.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I am a dedicated web developer with a passion for creating performant, responsive, and user-friendly web applications. With experience in HTML, CSS, and JavaScript, I specialize in building dynamic and accessible websites that provide seamless user experiences across all devices. I continuously strive to learn new technologies and best practices to deliver high-quality solutions that meet client needs and industry standards.
+      </p>
+      <p>
+        Connect with me on <a href="https://www.linkedin.com/in/haripriya-addepalli-764b75350/" target="_blank" rel="noopener noreferrer">LinkedIn</a> to view my professional profile and projects.
+      </p>
+    </section>
+
+    <section id="linkedin-projects">
+      <h2>LinkedIn Projects</h2>
+      <div class="project-list">
+        <article class="project-item">
+          <h3>Project Title 1</h3>
+          <p>Developed a responsive e-commerce website with integrated payment gateway and user authentication, improving sales by 30%.</p>
+        </article>
+        <article class="project-item">
+          <h3>Project Title 2</h3>
+          <p>Created a blogging platform with real-time commenting and content management system, enhancing user engagement.</p>
+        </article>
+        <article class="project-item">
+          <h3>Project Title 3</h3>
+          <p>Designed an interactive portfolio site with animations and mobile-first design, increasing visitor retention.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+      <p id="formMessage" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 My Portfolio</p>
+  </footer>
+
+  <script src="script.min.js" defer></script>
+</body>
+</html>
